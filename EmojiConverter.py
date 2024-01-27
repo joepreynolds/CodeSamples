@@ -50,7 +50,7 @@ while message.upper() != "QUIT":
         print("Teach me.... ")
         chars = input("What is the character representation of the emoji: ")
         img = input("What is the image representation of the emoji:")
-        emojis[chars] = img
+        emojis[chars.upper().replace("-", "")] = img
         message = input(">")
 
     else:
