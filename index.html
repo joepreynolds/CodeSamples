@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+           var num1 = "0";
+			var num2 = "0";
+			var operator = "";
+			window.onload = function() {
+				document.getElementById("output").focus();
+			}
+			window.onkeydown = function (e) {
+				console.log(e);
+			}
+			function buttonClick(value){
+				var x = document.getElementById("output").value;
+				if (value == "AC"){
+					x = "0";
+					num1 = "0";
+					num2 = "0"
+				}
+				else if (x == "0" || x.endsWith("."))
+				{
+					x = value;
+				}
+				else
+				{
+					x += value;
+				}
+				document.getElementById("output").value = x;
+			}
+			
+			function mathFuncitonClicked(buttonOperator){
+				num1 = document.getElementById("output").value;
+				document.getElementById("output").value = ".";
+				operator = buttonOperator;
+			}
+			
+			function equalsClicked(){
+				num2 = document.getElementById("output").value;
+				
+				var solution;
+				switch(operator){
+				
+					case "+":
+						solution  = parseFloat(num1) + parseFloat(num2) + ".";
+						break;	
+					case "-":
+						solution = parseFloat(num1) - parseFloat(num2) + ".";
+						break;	
+					case "*":
+						solution = parseFloat(num1) * parseFloat(num2) + ".";
+						break;	
+					case "/":
+						solution = parseFloat(num1) / parseFloat(num2) + ".";
+						break;	
+				}
+				document.getElementById("output").value = solution
+			}
+			function keyDown(event){
+				console.log(event.key);
+			} 
+        </script>
+        <style>
+			.container{
+				width:22%;
+                min-width: 200px;
+                border-radius: 20px;
+				border-style: solid;
+				text-align: center;
+				margin: 5px;
+				padding: 5px;
+			}
+			.numButton{
+				height: 50px;
+				width:40px;
+                border-radius: 10px;
+                margin: 2px;
+			}
+			.funcButton{
+				height:50px;
+				width:50px;
+                border-radius: 10px;
+			}
+            .outputText{
+                height:30px;
+                border-radius: 10px;
+                border-width: 1px;
+                font-size: large;
+                text-align: right;
+                max-width: 185px;
+            }
+		</style>
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <input class="outputText" type="text" readonly="true" value="0" id="output"/>
+            </div>
+            <hr />
+            <div>
+                <input class="funcButton" onClick="mathFuncitonClicked(this.value)" type="button" value="+"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="1"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="2"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="3"/>
+                <br />                        
+                <input class="funcButton" onClick="mathFuncitonClicked(this.value)" type="button" value="-"/>
+                <input class="numButton"  onClick="buttonClick(this.value)" type="button" value="4"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="5"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="6"/>
+                <br />
+                <input class="funcButton" onClick="mathFuncitonClicked(this.value)" type="button" value="*"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="7"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="8"/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="9"/>
+                <br />
+                <input class="funcButton" onClick="mathFuncitonClicked(this.value)"type="button" value="/"/>
+    
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="0"/>
+                <input class="numButton" onClick="equalsClicked()" type="button" value = "="/>
+                <input class="numButton" onClick="buttonClick(this.value)" type="button" value="AC"/>
+            </div>
+        </div>
+    </body>
+</html>
